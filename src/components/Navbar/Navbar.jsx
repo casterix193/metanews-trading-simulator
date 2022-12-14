@@ -11,7 +11,7 @@ const Navbar = ({ balance, onLogout }) => {
           Dashboard
         </Nav.Link>
         <Nav.Link
-          href="/"
+          href="https://metanews.onrender.com"
           className="mx-3 font-weight-bold"
           style={{ color: '#454B52' }}
         >

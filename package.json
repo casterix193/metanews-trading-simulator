@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "https://api-tradingsimulator.onrender.com",
   "devDependencies": {
     "prettier": "^2.8.1",
     "react-validation": "^3.0.7",

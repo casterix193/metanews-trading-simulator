@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const API_URL = "http://localhost:8080/exchange";
+const API_URL = "https://api-tradingsimulator.onrender.com/exchange";
 
 class ExchangeService {
   getCurrentPrice(coin) {
