@@ -10,6 +10,9 @@ const Navbar = ({ balance, onLogout }) => {
         <Nav.Link href="/dashboard" className="mx-3 text-white">
           Dashboard
         </Nav.Link>
+        <Nav.Link href="/portfolio" className="mx-3 text-white">
+          Portfolio
+        </Nav.Link>
         <Nav.Link
           href="https://metanews.onrender.com"
           className="mx-3 font-weight-bold"

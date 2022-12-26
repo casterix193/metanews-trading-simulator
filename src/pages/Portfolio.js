@@ -16,11 +16,9 @@ import {
   XTZ_logo,
 } from '../img';
 import Navbar from '../components/Navbar/Navbar';
-import MarketScreener from '../components/Navbar/MarketScreener';
-
 
 // component Dashboard
-export default class Dashboard extends React.Component {
+export default class Portfolio extends React.Component {
   /**
    * constructor of Dashboard
    * @param {*} props
@@ -129,18 +127,6 @@ export default class Dashboard extends React.Component {
     });
   }
 
-
-  /**
-   * handles mouse over piechart
-   * @param {Event} e
-   */
-  handleMouseOver(e) {
-    e.preventDefault();
-    this.setState({
-      visibility: 'visible',
-    });
-  }
-
   /**
    * gets portfolio from backend
    */
@@ -237,6 +223,17 @@ export default class Dashboard extends React.Component {
   }
 
   /**
+   * handles mouse over piechart
+   * @param {Event} e
+   */
+  handleMouseOver(e) {
+    e.preventDefault();
+    this.setState({
+      visibility: 'visible',
+    });
+  }
+
+  /**
    * handles logout
    * @param {Event} e
    */
@@ -271,9 +268,35 @@ export default class Dashboard extends React.Component {
         >
           <Col md="8" className="h-100 m-0 p-0 pb-2 pl-2">
             <div className="rounded-2 w-100 h-100 bg-dark">
-              <MarketScreener>
-              
-              </MarketScreener>
+              <h3 className="text-center pt-3 mb-2 pb-0">
+                Total Value: $
+                {userValue ? Number(userValue).toLocaleString() : userValue}
+              </h3>
+              <PieChart
+                className="h-90 mt-0 pt-0"
+                style={{ fontSize: '5px' }}
+                data={portfolio}
+                label={({ dataEntry }) => dataEntry.key}
+                labelStyle={(index) => ({
+                  fill: portfolio[index].color,
+                  fontSize: '5px',
+                  visibility: this.state.visibility[index],
+                })}
+                radius={42}
+                labelPosition={112}
+                onMouseOver={(_, index) => {
+                  console.log(index);
+                  // eslint-disable-next-line
+                  this.state.visibility[index] = 'visible';
+                  this.forceUpdate();
+                }}
+                onMouseOut={(_, index) => {
+                  console.log(index);
+                  // eslint-disable-next-line
+                  this.state.visibility[index] = 'hidden';
+                  this.forceUpdate();
+                }}
+              />
             </div>
           </Col>
           <Col md="4" className="h-100 m-0 p-0 pb-2 pl-2">
@@ -507,4 +530,3 @@ export default class Dashboard extends React.Component {
     );
   }
 }
-
